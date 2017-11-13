@@ -1,0 +1,28 @@
+<div class="createMovie">
+  <h2>Add your Movie</h2>
+  <label>Title:</label><input #title />
+  <br>
+  <label>Year:</label><input #year />
+  <br>
+  <label>Duration:</label><input #duration />
+  <br>
+  <label>Synopsis:</label><input #synopsis />
+  <br>
+  <button (click)="add(title.value, year.value, duration.value, synopsis.value);
+     title.value=''; year.value=''; duration.value=''; synopsis.value=''">Add</button>
+</div>
+
+<div class="listMovies">
+  <ul>
+    <li *ngFor="let movie of movies" (click)="onSelected(movie)"
+        [class.selected]="movie === selectedMovie">
+     <span>{{movie.title}}</span>
+     <button (click)="delete(movie)">X</button>
+    </li>
+  </ul>
+</div>
+  <button id="btn-slide" (click)="slide()">Hide Movies</button>
+<div class="previuwDetail" *ngIf="selectedMovie">
+  <h2>{{selectedMovie.title}}</h2>
+  <button (click)="getMovieDetail()">View Details</button>
+</div>
